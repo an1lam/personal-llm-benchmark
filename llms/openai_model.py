@@ -1,4 +1,5 @@
 from io import BytesIO
+import os
 from PIL import Image
 import base64
 
@@ -8,7 +9,7 @@ import json
 class OpenAIModel:
     def __init__(self, name):
         config = json.load(open("config.json"))
-        api_key = config['llms']['openai']['api_key'].strip()
+        api_key = os.getenv('OPENAI_API_KEY', config['llms']['openai']['api_key'].strip())
         self.client = OpenAI(api_key=api_key)
         self.name = name
         config = json.load(open("config.json"))

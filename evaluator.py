@@ -101,7 +101,7 @@ class Node:
         necessary context. 
         """
         self.env = env
-        self.conv = conv
+        self.conv: Conversation = conv
         self.llm = llm
         self.eval_llm = eval_llm
         self.vision_eval_llm = vision_eval_llm
